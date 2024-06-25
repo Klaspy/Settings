@@ -17,7 +17,7 @@ public:
 
     QVariant getSetting(QString name, QString categoty = "", QVariant defValue = QVariant());
     void setSetting(QString categoty, QString name, QVariant value);
-    void initSettings(QMultiMap<QString, QString> fields);
+    void initValue(QString category, QString name, QVariant value);
 
 private:
     // Singleton

@@ -27,19 +27,12 @@ void Settings::setSetting(QString category, QString name, QVariant value)
     return m_settings->setValue(category + name, value);
 }
 
-void Settings::initSettings(QMultiMap<QString, QString> fields)
+void Settings::initValue(QString category, QString name, QVariant value)
 {
-    foreach (QString category, fields.keys())
+    if (category != "") category += "/";
+    if (!m_settings->contains(category + name))
     {
-        category.remove("/");
-        if (category != "") category += "/";
-        foreach (QString field, fields.values(category))
-        {
-            if (!m_settings->contains(category  + field))
-            {
-                m_settings->setValue(category + field, "");
-            }
-        }
+        m_settings->setValue(category + name, value);
     }
 }
 
