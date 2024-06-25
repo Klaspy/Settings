@@ -15,7 +15,7 @@ public:
 
     ~Settings();
 
-    QVariant getSetting(QString name, QString categoty = "", QVariant defValue = QVariant());
+    QVariant getSetting(QString categoty, QString name, QVariant defValue = QVariant());
     void setSetting(QString categoty, QString name, QVariant value);
     void initValue(QString category, QString name, QVariant value);
 

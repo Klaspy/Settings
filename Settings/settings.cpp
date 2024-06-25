@@ -10,15 +10,12 @@ Settings::~Settings()
 {
 }
 
-QVariant Settings::getSetting(QString name, QString category, QVariant defValue)
+QVariant Settings::getSetting(QString category, QString name, QVariant defValue)
 {
     m_settings->sync();
     if (category != "") category += "/";
-    if (m_settings->allKeys().contains(category + name))
-    {
-        return m_settings->value(category + name, defValue);
-    }
-    return QVariant();
+
+    return m_settings->value(category + name, defValue);
 }
 
 void Settings::setSetting(QString category, QString name, QVariant value)
