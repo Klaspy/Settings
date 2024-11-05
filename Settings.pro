@@ -1,3 +1,5 @@
+QT += qml
+
 HEADERS += \
     Settings/settings.h
 

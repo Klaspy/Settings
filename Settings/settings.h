@@ -26,9 +26,24 @@ private:
     Settings& operator=(const Settings&);
 
     QSettings *m_settings;
-
-signals:
-
 };
+
+#ifdef QML_ENABLED
+#include <QQmlEngine>
+#include <QQmlContext>
+
+class SettingsQmlHelper : public QObject
+{
+    Q_OBJECT
+public:
+    explicit SettingsQmlHelper(QQmlEngine *parent);
+
+public slots:
+    QVariant getSetting(QString category, QString name, QVariant defValue = QVariant());
+    void setSetting(QString categoty, QString name, QVariant value);
+    void initValue(QString category, QString name, QVariant value);
+};
+
+#endif
 
 #endif // SETTINGS_H
